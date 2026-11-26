@@ -1,0 +1,21 @@
+name: bulk-file-processing-ci
+on:
+  push:
+    paths:
+      - "projects/bulk-file-processing-automation-toolkit/**"
+  pull_request:
+    paths:
+      - "projects/bulk-file-processing-automation-toolkit/**"
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: projects/bulk-file-processing-automation-toolkit/bulk-file-processing-automation-toolkit-production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -e ".[dev]"
+      - run: pytest -q

@@ -1,0 +1,10 @@
+{
+  "ignored_names": [".DS_Store", "Thumbs.db"],
+  "extension_labels": {
+    ".pdf": "documents",
+    ".csv": "spreadsheets",
+    ".xlsx": "spreadsheets",
+    ".jpg": "images",
+    ".png": "images"
+  }
+}
