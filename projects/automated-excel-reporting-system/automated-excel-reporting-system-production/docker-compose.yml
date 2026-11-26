@@ -1,0 +1,4 @@
+services:
+  toolkit:
+    build: .
+    restart: unless-stopped
