@@ -1,0 +1,10 @@
+{
+  "checks": [
+    {
+      "name": "Example public endpoint",
+      "url": "https://httpbin.org/status/200",
+      "method": "GET",
+      "expected_status": 200
+    }
+  ]
+}
