@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: knowledge-assistant
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: knowledge-assistant
+  ports:
+    - name: http
+      port: {{ .Values.service.port }}
+      targetPort: http
