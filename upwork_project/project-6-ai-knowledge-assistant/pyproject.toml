@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "knowledge-assistant"
+version = "0.1.0"
+description = "Evidence-grounded document Q&A starter"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+pdf = ["pypdf>=4.0"]
+api = ["fastapi>=0.110", "uvicorn>=0.27"]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+
+[project.scripts]
+knowledge-assistant = "knowledge_assistant.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
