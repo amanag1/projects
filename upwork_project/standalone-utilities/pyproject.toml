@@ -9,6 +9,9 @@ description = "Local-first utilities for repetitive business operations"
 requires-python = ">=3.10"
 dependencies = []
 
+[project.scripts]
+automation-utils = "automation_utilities.cli:main"
+
 [project.optional-dependencies]
 dev = ["pytest>=8.0", "ruff>=0.5"]
 
