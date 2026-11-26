@@ -1,0 +1,1 @@
+"""Persistence adapters are application-specific and intentionally not bundled."""
