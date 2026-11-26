@@ -1,17 +1,21 @@
 # Automated Excel Reporting System — Production
 
-CSV/XLSX in → profile, missing values, numeric summaries, and a formatted multi-sheet report.
+A modular FastAPI service that accepts Excel workbooks and returns a profiled workbook with original worksheet data and column-level diagnostics (data type, missing count and distinct count).
 
-## Install
+## Run locally
 ```bash
-python -m venv .venv
-# Windows: .venv\\Scripts\\activate | macOS/Linux: source .venv/bin/activate
-pip install -r requirements.txt
+pip install -e ".[test]"
+uvicorn excel_reporting.main:app --app-dir src --reload
+pytest -q
 ```
 
-## Usage
+## Run with a container
 ```bash
-python app.py --help
+docker compose up --build
 ```
 
-Core module is `app.py`. Run tests with `pytest`. Container build: docker compose up --build.
+- Health: `GET /health`
+- Readiness: `GET /ready`
+- Generate report: `POST /api/v1/reports/profile` (multipart field: `file`)
+
+Helm chart: `deploy/helm/excel-reporting`. Before internet-facing deployment, add authentication, upload-size enforcement, malware scanning, managed artifact storage and retention policies.

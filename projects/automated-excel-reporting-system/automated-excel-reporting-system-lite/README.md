@@ -1,17 +1,17 @@
 # Automated Excel Reporting System — Lite
 
-CSV/XLSX in → profile, missing values, numeric summaries, and a formatted multi-sheet report.
+A lightweight, local tool that reads an Excel workbook and creates a second workbook containing the original sheets plus per-column data profiles (type, missing values and distinct values).
 
-## Install
+## Run
 ```bash
-python -m venv .venv
-# Windows: .venv\\Scripts\\activate | macOS/Linux: source .venv/bin/activate
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
+python app.py sample_data/sales.xlsx --output output/report.xlsx
 ```
 
-## Usage
+## Test
 ```bash
-python app.py --help
+python -m pip install pytest
+pytest -q
 ```
 
-Core module is `app.py`. Run tests with `pytest`. This edition intentionally keeps the dependency and deployment footprint small.
+Python 3.10+. Input files are read only; the output is written separately. This edition runs locally and does not include an API, database, container or cluster deployment.
