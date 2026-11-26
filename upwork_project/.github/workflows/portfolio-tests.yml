@@ -1,0 +1,28 @@
+name: Upwork portfolio tests
+on:
+  push:
+    paths:
+      - 'upwork_project/**'
+  pull_request:
+    paths:
+      - 'upwork_project/**'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        folder:
+          - upwork_project/project-6-ai-knowledge-assistant
+          - upwork_project/api-integration-toolkit
+          - upwork_project/standalone-utilities
+    defaults:
+      run:
+        working-directory: ${{ matrix.folder }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e ".[dev]"
+      - run: python -m compileall -q src tests
+      - run: pytest -q
