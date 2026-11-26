@@ -1,0 +1,6 @@
+apiVersion: v2
+name: document-intelligence
+description: Document Intelligence and Extraction API
+type: application
+version: 1.0.0
+appVersion: "1.0.0"

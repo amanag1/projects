@@ -1,0 +1,22 @@
+name: CI
+on:
+  push:
+    paths:
+      - 'projects/document-intelligence-extraction-toolkit/**'
+  pull_request:
+    paths:
+      - 'projects/document-intelligence-extraction-toolkit/**'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: projects/document-intelligence-extraction-toolkit/document-intelligence-extraction-toolkit-production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e ".[dev]"
+      - run: python -m compileall -q src tests
+      - run: pytest -q
