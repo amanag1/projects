@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "knowledge-assistant.fullname" . | default "knowledge-assistant" }}
+  name: knowledge-assistant
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
