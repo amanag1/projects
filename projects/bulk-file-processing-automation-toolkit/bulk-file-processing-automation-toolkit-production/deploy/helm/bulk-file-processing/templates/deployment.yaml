@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "bulk-file-processing.fullname" . | default "bulk-file-processing" }}
+  name: {{ .Release.Name }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: bulk-file-processing
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: bulk-file-processing
+        app: {{ .Release.Name }}
     spec:
       containers:
         - name: api
