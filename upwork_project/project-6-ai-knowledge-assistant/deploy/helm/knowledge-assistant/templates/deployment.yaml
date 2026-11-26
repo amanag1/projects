@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "knowledge-assistant.fullname" . | default "knowledge-assistant" }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: knowledge-assistant
+  template:
+    metadata:
+      labels:
+        app: knowledge-assistant
+    spec:
+      containers:
+        - name: knowledge-assistant
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8000
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
