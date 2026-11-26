@@ -1,0 +1,1 @@
+"""FastAPI starter kit Lite edition."""

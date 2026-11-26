@@ -1,0 +1,21 @@
+name: fastapi-starter-ci
+on:
+  push:
+    paths:
+      - "projects/production-ready-fastapi-starter-kit/**"
+  pull_request:
+    paths:
+      - "projects/production-ready-fastapi-starter-kit/**"
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: projects/production-ready-fastapi-starter-kit/production-ready-fastapi-starter-kit-production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -e ".[dev]"
+      - run: pytest -q

@@ -1,0 +1,1 @@
+"""Domain-level operations, independent of HTTP transport."""

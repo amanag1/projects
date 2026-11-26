@@ -1,0 +1,1 @@
+"""Modular FastAPI service starter."""

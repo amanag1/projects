@@ -1,0 +1,6 @@
+apiVersion: v2
+name: fastapi-starter
+description: Helm starter chart for a FastAPI service
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
